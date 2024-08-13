@@ -1,0 +1,350 @@
+body {
+  background-color: black;
+}
+
+.main-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.main-title {
+  font-style: oblique;
+  font-family: 'Franklin Gothic Medium';
+  font-size: larger;
+  font-weight: bold;
+  color: white;
+}
+
+.main-image {
+  height: 300px;
+  width: 300px;
+  padding-left: 10px;
+}
+
+/* features */
+.features {
+  width: 800px;
+  margin: auto;
+  /* background-image: url(image/—Pngtree—future\ technology\ robot\ interaction_927565.jpg); */
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 15px;
+}
+
+.features-div1 {
+  text-align: center;
+  font-family: 'Franklin Gothic Medium';
+  font-weight: bold;
+  font-size: 20px;
+  color: lightseagreen;
+}
+
+.features-div1 :hover {
+  color: blue;
+}
+
+.features-div2 {
+  font-family: 'Calibri';
+
+}
+
+/* features */
+
+/* footer */
+.footer {
+  padding: 10px;
+}
+
+.footer-title {
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: gold;
+  padding: 10px;
+}
+
+/* footer */
+
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+
+.listCategory a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+.listCategory a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.admin {
+  background-image: linear-gradient(black, blue, lightseagreen);
+}
+
+.adminList {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f1f1;
+  height: 623px;
+
+}
+
+.listItems a{
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.listItems a:hover{
+  background-color: #555;
+  color: white;
+}
+
+/* percentage */
+
+.flex-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.single-chart {
+  width: 33%;
+  justify-content: space-around ;
+}
+
+.circular-chart {
+  display: block;
+  margin: 10px auto;
+  max-width: 80%;
+  max-height: 250px;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #eee;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.circular-chart.orange .circle {
+  stroke: #ff9f00;
+}
+
+.circular-chart.green .circle {
+  stroke: #4CC790;
+}
+
+.circular-chart.blue .circle {
+  stroke: #3c9ee5;
+}
+
+.percentage {
+  fill: #000000;
+  font-family: sans-serif;
+  font-size: 0.5em;
+  text-anchor: middle;
+}
+
+/********* Circle Pie ***********/
+$circle-diameter: 100px;
+$circle-border-width: 10px;
+$circle-background-color: #fff;
+$circle-border-color-remaining: #ccc;
+$circle-border-color-elapsed: red;
+
+.pie {
+  width: $circle-diameter;
+  height: $circle-diameter;
+  display: block;
+  border-radius: 50%;
+  background-color: $circle-border-color-elapsed;
+  position: relative;
+  border: none;
+  margin: 0 auto;
+
+  &:after {
+    display: none;
+  }
+
+  // Remove this if you do not need the percentage circle
+  &:after {
+    display: block;
+    position: absolute;
+    top: $circle-border-width;
+    left: $circle-border-width;
+    height: $circle-diameter - 2*$circle-border-width;
+    width:  $circle-diameter - 2*$circle-border-width;
+    line-height:  $circle-diameter - 2*$circle-border-width;
+    background: $circle-background-color;
+    border-radius: 50%;
+    font-size: 1.4em;
+    text-align: center;
+  }
+
+
+  // loop to rotate first 50 percent
+  @for $j from 1 through 50 {
+    &.p#{$j} {
+      background-image:
+        /* 10% = 126deg = 90 + ( 360 * .1 ) */
+        linear-gradient(90deg+(360*0.01*$j), transparent 50%, $circle-border-color-remaining 50%),
+        linear-gradient(90deg, $circle-border-color-remaining 50%, transparent 50%); // remove highlight at the bottom half of the border/circle
+
+      &:after {
+        content: "#{$j}%";
+      }
+    }
+  }
+  // loop to rotate last 50 percent
+  @for $j from 51 through 100 {
+    &.p#{$j} {
+      background-image:
+        linear-gradient(90deg, transparent 50%, $circle-border-color-elapsed 50%), // highlight the right half of the border/circle
+        /* 90% = 54deg = -90 + (360*0.01*($j - 50) */
+        linear-gradient(-90deg+(360*0.01*($j - 50)), transparent 50%, $circle-border-color-remaining 50%);
+
+      &:after {
+        content: "#{$j}%";
+      }
+    }
+  }
+}
+/********* End Circle Pie ***********/
+
+input[type="file"] {
+  display: none;
+}
+
+header {
+  background-color: #f8f9fa;
+  padding: 20px;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#cart-summary {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.check {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.check:hover {
+  background-color: #218838;
+}
+
+/* invoice */
+.bodyInvoice {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+}
+
+.invoice-container {
+  max-width: 800px;
+  background-color: #fff;
+  padding: 20px;
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.invoice-details p, .billing-details p {
+  margin: 5px 0;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+.invoice-items table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.invoice-items th, .invoice-items td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.invoice-total {
+  text-align: right;
+}
+
+.invoice-total h2 {
+  font-size: 20px;
+  margin: 0;
+}
+
+.invoice {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.invoice:hover {
+  background-color: #45a049;
+}
